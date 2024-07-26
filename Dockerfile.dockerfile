@@ -5,10 +5,10 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Copy the WAR file into the container at /app
-COPY Garage.war /app
+COPY Garage.war /app/Garage.war
 
 # Run the WAR file
-CMD ["java", "-jar", "Garage.war"]
+CMD ["java", "-jar", "/app/Garage.war"]
 
 # Expose port 8080
 EXPOSE 8080
