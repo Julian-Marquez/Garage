@@ -1,14 +1,14 @@
-# Use an official Java runtime as a parent image
-FROM openjdk:21-jdk-slim
+# Use a base image with Tomcat
+FROM tomcat:10.1
 
-# Set the working directory in the container
-WORKDIR /app
+# Copy the WAR file into the appropriate location in the container
+COPY Garage.war /usr/local/tomcat/webapps/
 
-# Copy the WAR file into the container at /app
-COPY Garage.war /app/Garage.war
+# Set up environment variables or other configurations if needed
+ENV JAVA_OPTS="-Xmx256m -Xms256m"
 
-# Run the WAR file
-CMD ["java", "-jar", "/app/Garage.war"]
-
-# Expose port 8080
+# Expose a port if needed (e.g., 8080 for Tomcat)
 EXPOSE 8080
+
+# Command to start Tomcat
+CMD ["catalina.sh", "run"]
