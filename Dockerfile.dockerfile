@@ -4,6 +4,7 @@ FROM openjdk:24-oracle AS build
 # Set the working directory
 WORKDIR /app
 
+
 # Copy the application source code to the container
 COPY . .
 
