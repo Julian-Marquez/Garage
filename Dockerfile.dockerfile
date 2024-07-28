@@ -2,7 +2,7 @@
 FROM openjdk:24-oracle AS build
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /
 
 
 # Copy the application source code to the container
@@ -20,7 +20,7 @@ RUN mvn clean package -DskipTests
 FROM openjdk:24-slim
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /
 
 # Copy the WAR file from the build stage to the runtime stage
 COPY --from=build /app/target/Garage.war Garage.war
