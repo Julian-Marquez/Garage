@@ -1,8 +1,8 @@
 # Stage 1: Build the application
-FROM openjdk:24-oracle AS build
+FROM openjdk:21-oracle AS build
 
 # Set the working directory
-WORKDIR /
+WORKDIR /app
 
 
 # Copy the application source code to the container
@@ -17,10 +17,10 @@ RUN apt-get update && \
 RUN mvn clean package -DskipTests
 
 # Stage 2: Create the runtime image
-FROM openjdk:24-slim
+FROM openjdk:21-slim
 
 # Set the working directory
-WORKDIR /
+WORKDIR /app
 
 # Copy the WAR file from the build stage to the runtime stage
 COPY --from=build /app/target/Garage.war Garage.war
