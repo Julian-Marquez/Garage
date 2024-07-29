@@ -23,7 +23,7 @@ FROM openjdk:21-slim
 WORKDIR /app
 
 # Copy the WAR file from the build stage to the runtime stage
-COPY --from=build /app/target/Garage.war Garage.war
+COPY --from=build Garage.war
 
 # Run the WAR file
 CMD ["java", "-jar", "Garage.war"]
