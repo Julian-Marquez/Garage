@@ -1,7 +1,6 @@
 build:
   docker:
-  web:
-    Dockerfile
+    web: Dockerfile
 
 run:
   web: /usr/local/tomcat/bin/catalina.sh run
